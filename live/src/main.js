@@ -1,6 +1,8 @@
 import React from 'react';
 import Menu from './components/menu';
+import Login from './components/pages/login';
 import Footer from './components/footer';
+
 
 import {connect} from 'react-redux'
 

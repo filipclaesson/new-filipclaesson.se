@@ -16,6 +16,8 @@ import {addToCart} from './actions/cartActions';
 import {postBooks,deleteBooks,updateBooks} from './actions/booksActions';
 
 
+
+
 const middleware = applyMiddleware(thunk,logger);
 // STEP 1 Create a store and subscribe for any changes
 const store = createStore(reducers, middleware);
@@ -23,13 +25,16 @@ const store = createStore(reducers, middleware);
 import BooksList from './components/pages/bookslist';
 import Cart from './components/pages/cart'
 import BooksForm from './components/pages/booksForm'
+import Login from './components/pages/login'
 import Main from './main'
 
 const Routes = (
 	<Provider store={store}>
 		<div>
 			<Router history={browserHistory}>
-				<Route path="/" component={Main}>
+				// <Route path="/" component={Main}>
+				<Redirect from="/" to="/login"/>
+					<Route path="/login" component={Login}/>
 					<IndexRoute component={BooksList}/>
 					<Route path="/admin" component={BooksForm}/>
 					<Route path="/cart" component={Cart}/>
