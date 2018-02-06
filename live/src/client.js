@@ -22,6 +22,7 @@ const store = createStore(reducers, middleware);
 
 
 import MetricList from './components/pages/metricList';
+import CreateMetric from './components/pages/createMetric';
 import Main from './main'
 
 const Routes = (
@@ -30,6 +31,7 @@ const Routes = (
 			<Router history={browserHistory}>
 				<Route path="/" component={Main}>
 					<IndexRoute component={MetricList}/>
+					<Route path="/create_metric" component={CreateMetric} />
 				</Route>
 			</Router>
 		</div>

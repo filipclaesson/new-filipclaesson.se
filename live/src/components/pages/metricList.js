@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {getMetrics} from '../../actions/metricsActions';
 import {Grid, Col, Row, Button} from 'react-bootstrap'
 import MetricsItem from './metricItem'
-import MetricFilter from './metricFilter';
+// import MetricFilter from './metricFilter';
 // import Cart from './cart'
 
 class MetricsList extends React.Component{
@@ -17,7 +17,7 @@ class MetricsList extends React.Component{
 	render(){
 		const MetricsList = this.props.metrics.map((metricItem)=>{
 				return(
-					<Col xs={12} md={4} key={metricItem.id}>
+					<Col xs={12} md={12} key={metricItem.id}>
 						<MetricsItem 
 						id ={metricItem.id}
 						name ={metricItem.name}
@@ -29,9 +29,6 @@ class MetricsList extends React.Component{
 		return(
 
 			<Grid>
-				<Row>
-					<MetricFilter/>
-				</Row>
 				<Row>
 					<Col xs={12} sm={6}>
 					</Col>
