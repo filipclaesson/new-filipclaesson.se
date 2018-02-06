@@ -1,5 +1,7 @@
-const books = require('./books');
+const metrics = require('./metrics');
+const users = require('./users');
 
 module.exports = {
-  books
+  metrics,
+  users
 };

@@ -8,7 +8,7 @@ class Main extends React.Component{
 	render(){
 		return(
 			<div>
-				<Menu cartItemNumber={this.props.totalQty}/>
+				<Menu cartItemNumber="1"/>
 					{this.props.children}
 				<Footer />
 			</div>
@@ -19,7 +19,7 @@ class Main extends React.Component{
 
 function mapStateToProps(state){
 	return {
-		totalQty: state.cart.totalQty
+		// totalQty: state.cart.totalQty
 	}
 }
 export default connect(mapStateToProps)(Main);

@@ -32,10 +32,13 @@ nodemon
 npm install --save sequelize pg pg-hstore
 sequelize init
 # postgres
-createdb udemy-tutorial
+createdb metrics-dev
 
 # create models
-sequelize model:create --name Books --attributes title:string,description:string,images:string,price:double
+sequelize model:create --name Metric --attributes name:string,description:string,settings:integer,user:bigint
+sequelize model:create --name User --attributes user_name:string,email:string
+#sequelize model:create --name MetricSettings --attributes Metric:string,description:string,attributes:integer
+
 
 
 
