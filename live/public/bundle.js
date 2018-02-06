@@ -12806,6 +12806,10 @@ var _metricList = __webpack_require__(252);
 
 var _metricList2 = _interopRequireDefault(_metricList);
 
+var _createMetric = __webpack_require__(417);
+
+var _createMetric2 = _interopRequireDefault(_createMetric);
+
 var _main = __webpack_require__(414);
 
 var _main2 = _interopRequireDefault(_main);
@@ -12837,7 +12841,8 @@ var Routes = _react2.default.createElement(
 			_react2.default.createElement(
 				_reactRouter.Route,
 				{ path: '/', component: _main2.default },
-				_react2.default.createElement(_reactRouter.IndexRoute, { component: _metricList2.default })
+				_react2.default.createElement(_reactRouter.IndexRoute, { component: _metricList2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/create_metric', component: _createMetric2.default })
 			)
 		)
 	)
@@ -35356,10 +35361,6 @@ var _metricItem = __webpack_require__(412);
 
 var _metricItem2 = _interopRequireDefault(_metricItem);
 
-var _metricFilter = __webpack_require__(413);
-
-var _metricFilter2 = _interopRequireDefault(_metricFilter);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35368,6 +35369,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import MetricFilter from './metricFilter';
 // import Cart from './cart'
 
 var MetricsList = function (_React$Component) {
@@ -35390,7 +35392,7 @@ var MetricsList = function (_React$Component) {
 			var MetricsList = this.props.metrics.map(function (metricItem) {
 				return _react2.default.createElement(
 					_reactBootstrap.Col,
-					{ xs: 12, md: 4, key: metricItem.id },
+					{ xs: 12, md: 12, key: metricItem.id },
 					_react2.default.createElement(_metricItem2.default, {
 						id: metricItem.id,
 						name: metricItem.name,
@@ -35400,11 +35402,6 @@ var MetricsList = function (_React$Component) {
 			return _react2.default.createElement(
 				_reactBootstrap.Grid,
 				null,
-				_react2.default.createElement(
-					_reactBootstrap.Row,
-					null,
-					_react2.default.createElement(_metricFilter2.default, null)
-				),
 				_react2.default.createElement(
 					_reactBootstrap.Row,
 					null,
@@ -47742,7 +47739,7 @@ exports.default = MetricItem; //connect(mapStateToProps, mapDispatchToProps)(Met
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -47765,63 +47762,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BUTTONS = ['Default', 'Primary', 'Success', 'Info', 'Warning', 'Danger'];
-
-function renderDropdownButton(title, i) {
-  return _react2.default.createElement(
-    _reactBootstrap.DropdownButton,
-    {
-      title: title,
-      key: i,
-      id: 'dropdown-basic-' + i
-    },
-    _react2.default.createElement(
-      _reactBootstrap.MenuItem,
-      { eventKey: '1' },
-      'Action'
-    ),
-    _react2.default.createElement(
-      _reactBootstrap.MenuItem,
-      { eventKey: '2' },
-      'Another action'
-    ),
-    _react2.default.createElement(
-      _reactBootstrap.MenuItem,
-      { eventKey: '3', active: true },
-      'Active Item'
-    ),
-    _react2.default.createElement(_reactBootstrap.MenuItem, { divider: true }),
-    _react2.default.createElement(
-      _reactBootstrap.MenuItem,
-      { eventKey: '4' },
-      'Separated link'
-    )
-  );
+var metric_type = ["Sold Price/sqm", "List Price/sqm", "Price increase %/sqm"];
+var period_time = ["1 Week", "1 Month", "3 Month", "6 Month", "1 Year"];
+var area = ["City", "Stockholm Komun"];
+function renderDropdownButton(title, menu_list, id) {
+	var menuItems = [];
+	menuItems = menu_list.map(function (name, index) {
+		return _react2.default.createElement(
+			_reactBootstrap.MenuItem,
+			{ key: index.toString(), eventKey: index.toString() },
+			name
+		);
+	});
+	return _react2.default.createElement(
+		_reactBootstrap.DropdownButton,
+		{
+			title: title,
+			key: id,
+			id: 'dropdown-basic-' + id },
+		menuItems
+	);
 }
 
 var buttonsInstance = _react2.default.createElement(
-  _reactBootstrap.ButtonToolbar,
-  null,
-  renderDropdownButton("filter", 1)
+	_reactBootstrap.ButtonToolbar,
+	null,
+	renderDropdownButton("Choose Metric Type", metric_type, "1"),
+	renderDropdownButton("Choose Time Period", period_time, "2"),
+	renderDropdownButton("Choose Area", area, "3")
 );
 
 var metricFilter = function (_React$Component) {
-  _inherits(metricFilter, _React$Component);
+	_inherits(metricFilter, _React$Component);
 
-  function metricFilter() {
-    _classCallCheck(this, metricFilter);
+	function metricFilter() {
+		_classCallCheck(this, metricFilter);
 
-    return _possibleConstructorReturn(this, (metricFilter.__proto__ || Object.getPrototypeOf(metricFilter)).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, (metricFilter.__proto__ || Object.getPrototypeOf(metricFilter)).apply(this, arguments));
+	}
 
-  _createClass(metricFilter, [{
-    key: 'render',
-    value: function render() {
-      return buttonsInstance;
-    }
-  }]);
+	_createClass(metricFilter, [{
+		key: 'render',
+		value: function render() {
+			return buttonsInstance;
+		}
+	}]);
 
-  return metricFilter;
+	return metricFilter;
 }(_react2.default.Component);
 // function mapStateToProps(state){
 // 	return{
@@ -47969,8 +47956,8 @@ var Menu = function (_React$Component) {
 						null,
 						_react2.default.createElement(
 							_reactBootstrap.NavItem,
-							{ eventKey: 1, href: '/about' },
-							'About'
+							{ eventKey: 1, href: '/create_metric' },
+							'Create Metric'
 						),
 						_react2.default.createElement(
 							_reactBootstrap.NavItem,
@@ -48066,6 +48053,108 @@ var Footer = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Footer;
+
+/***/ }),
+/* 417 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(49);
+
+var _reactRedux = __webpack_require__(47);
+
+var _redux = __webpack_require__(33);
+
+var _metricFilter = __webpack_require__(413);
+
+var _metricFilter2 = _interopRequireDefault(_metricFilter);
+
+var _metricList = __webpack_require__(252);
+
+var _metricList2 = _interopRequireDefault(_metricList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var createMetric = function (_React$Component) {
+  _inherits(createMetric, _React$Component);
+
+  function createMetric() {
+    _classCallCheck(this, createMetric);
+
+    return _possibleConstructorReturn(this, (createMetric.__proto__ || Object.getPrototypeOf(createMetric)).apply(this, arguments));
+  }
+
+  _createClass(createMetric, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactBootstrap.Grid,
+        null,
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Col,
+            { xs: 12, md: 12, key: '1' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              ' Create Metric '
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactBootstrap.Row,
+          null,
+          _react2.default.createElement(
+            _reactBootstrap.Col,
+            { xs: 12, md: 8 },
+            _react2.default.createElement(_metricFilter2.default, null)
+          ),
+          _react2.default.createElement(
+            _reactBootstrap.Col,
+            { xs: 12, md: 4 },
+            _react2.default.createElement(_metricList2.default, null)
+          )
+        )
+      );
+    }
+  }]);
+
+  return createMetric;
+}(_react2.default.Component);
+// function mapStateToProps(state){
+// 	return{
+// 		state.metrics.metrics
+// 	}
+// }
+// function mapDispatchToProps(dispatch){
+// 	return bindActionCreators({
+// 		addToCart:addToCart,
+// 		updateCart:updateCart
+// 	}, dispatch)
+// }
+
+
+exports.default = createMetric; //connect(mapStateToProps)(metricFilter);
 
 /***/ })
 /******/ ]);
