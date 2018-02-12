@@ -4,6 +4,7 @@ import {combineReducers} from 'redux';
 
 // import reducers to be combined
 import {metricsReducers} from './metricsReducers'
+import {userReducers} from './userReducers'
 // import {booksReducers} from './booksReducers'
 // import {cartReducers} from './cartReducers'
 
@@ -11,5 +12,6 @@ import {metricsReducers} from './metricsReducers'
 
 // export
 export default combineReducers({
-	metrics: metricsReducers
+	metrics: metricsReducers,
+	user: userReducers
 })

@@ -2,14 +2,13 @@
 import axios from 'axios';
 
 // Get Books
-export function getMetrics(id){
+export function getMetrics(user_id){
 	// return {
 	// 	type:"GET_METRICS"
 	// }
 	return function(dispatch){
-		axios.get("/metric/" + id)
+		axios.get("/metric/" + user_id)
 		.then(function(response){
-			console.log(response.data)
 			dispatch({type:"GET_METRICS", payload:response.data})
 		})
 		.catch(function(err){
@@ -18,26 +17,22 @@ export function getMetrics(id){
 	}
 }
 
-// // Post Books
-// export function postBooks(book){
-// 	return function(dispatch){
-// 		axios.post("/books", book)
-// 		.then(function(response){
-// 			dispatch({type:"POST_BOOK", payload:response.data})
-// 		})
-// 		.catch(function(err){
-// 			dispatch({type:"POST_BOOK_REJECTED", payload:"There was an error"})
-// 		})
-// 	}
-// }
+// Delete Books
+export function metricClick(metric){
 
-// // Delete Books
-// export function deleteBooks(id){
-// 	return {
-// 		type:"DELETE_BOOK",
-// 		payload: id
-// 	}
-// }
+	return function(dispatch){
+		axios.post("/get_metric_data", metric)
+		.then(function(response){
+			dispatch(
+				{type:"METRIC_CLICK"
+				, payload:{current_metric_data:response.data,current_metric:metric}
+			})
+		})
+		.catch(function(err){
+			dispatch({type:"METRIC_CLICK_REJECTED", payload:err})
+		})
+	}
+}
 
 // // Update Books
 // export function updateBooks(book){
@@ -46,3 +41,4 @@ export function getMetrics(id){
 // 		payload: book
 // 	}
 // }
+

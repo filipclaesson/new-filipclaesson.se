@@ -11,7 +11,7 @@ import MetricsItem from './metricItem'
 
 class MetricsList extends React.Component{
 	componentDidMount(){
-		this.props.getMetrics("2")
+		this.props.getMetrics(this.props.user.id)
 	}
 
 	render(){
@@ -27,7 +27,6 @@ class MetricsList extends React.Component{
 		  	}
 		)
 		return(
-
 			<Grid>
 				<Row>
 					<Col xs={12} sm={6}>
@@ -41,8 +40,9 @@ class MetricsList extends React.Component{
 
 function mapStateToProps(state){
 	return {
-		metrics: state.metrics.metrics
-	}
+		metrics: state.metrics.metrics,
+		user: state.user
+			}
 }
 
 

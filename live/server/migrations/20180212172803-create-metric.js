@@ -14,11 +14,32 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
-      settings: {
-        type: Sequelize.INTEGER
-      },
       user: {
         type: Sequelize.BIGINT
+      },
+      locations: {
+        type: Sequelize.STRING
+      },
+      group: {
+        type: Sequelize.STRING
+      },
+      aggrigation_type: {
+        type: Sequelize.STRING
+      },
+      aggrigation: {
+        type: Sequelize.STRING
+      },
+      low_sqm: {
+        type: Sequelize.DOUBLE
+      },
+      high_sqm: {
+        type: Sequelize.DOUBLE
+      },
+      low_date: {
+        type: Sequelize.DATE
+      },
+      high_date: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

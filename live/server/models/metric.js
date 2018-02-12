@@ -1,10 +1,17 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Metrics = sequelize.define('Metrics', {
+  var Metric = sequelize.define('Metric', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    settings: DataTypes.INTEGER,
-    user: DataTypes.BIGINT
+    user: DataTypes.BIGINT,
+    locations: DataTypes.STRING,
+    group: DataTypes.STRING,
+    aggrigation_type: DataTypes.STRING,
+    aggrigation: DataTypes.STRING,
+    low_sqm: DataTypes.DOUBLE,
+    high_sqm: DataTypes.DOUBLE,
+    low_date: DataTypes.DATE,
+    high_date: DataTypes.DATE
   }, {
     classMethods: {
       associate: function(models) {
@@ -12,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Metrics;
+  return Metric;
 };

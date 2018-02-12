@@ -1,0 +1,66 @@
+
+
+insert into "Metrics"
+(name
+,description
+,"user"
+,locations
+,"group"
+,aggrigation_type
+,aggrigation
+,low_sqm
+,high_sqm
+,low_date
+,high_date
+,"createdAt"
+,"updatedAt")
+
+values(
+'Innerstan'
+, 'pris i innerstran' 
+, 1
+, 'Gärdet,Östermalm,Vasastan,Kungsholmen,Södermalm'
+, 'sold_week'
+, 'AVG'
+, 'sqm_sold_price'
+, 0
+, 100
+, '2017-01-01'
+, '2017-02-01'
+, '2018-01-01 00:00:00'
+, '2018-01-01 00:00:00'
+)
+
+values(
+'Södermalm Avg Pris'
+, 'pris i Södermalm jan,feb 2017' 
+, 1
+, 'Södermalm'
+, 'sold_week'
+, 'AVG'
+, 'sqm_sold_price'
+, 0
+, 100
+, '2017-01-01'
+, '2017-02-01'
+, '2018-01-01 00:00:00'
+, '2018-01-01 00:00:00'
+)
+
+
+values(
+'Södermalm Avg Pris'
+, 'pris på Östermalm jan - apr 2017' 
+, 2
+, 'Gärdet,Östermalm,Vasastan,Kungsholmen,Södermalm'
+, 'sold_week'
+, 'AVG'
+, 'sqm_sold_price'
+, 0
+, 100
+, '2017-01-01'
+, '2017-04-01'
+, '2018-01-01 00:00:00'
+, '2018-01-01 00:00:00'
+)
+
