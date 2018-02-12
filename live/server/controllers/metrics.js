@@ -1,4 +1,4 @@
-const Metric = require('../models').Metrics;
+const Metric = require('../models').Metric;
 
 module.exports = {
     create(req, res) {
@@ -13,17 +13,13 @@ module.exports = {
         .then(user => res.status(201).send(user))
         .catch(error => res.status(400).send(error));
     }
-  ,list(req, res) {
-    // return(
-    //   res.status(200).send({
-    //   message: 'JANNE',
-    //   }))
-    var query = {id: req.params.id}
-    return Metric
-    .findAll({
-        where: query
-        })
-    .then(metric => res.status(200).send(metric))
-    .catch(error => res.status(400).send(error));
-  }
+    ,list(req, res) {
+        var query = {user: req.params.id}
+        return Metric
+        .findAll({
+            where: query
+            })
+        .then(metric => res.status(200).send(metric))
+        .catch(error => res.status(400).send(error));
+    }
 };

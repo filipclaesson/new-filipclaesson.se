@@ -24,7 +24,7 @@ class Cart extends React.Component {
 		if(quantity == 1){
 			this.onDelete(id)
 		}else{
-			this.props.updateCart(id, -1);		
+			this.props.updateCart(id, -1);
 		}
 	}
 	render(){
