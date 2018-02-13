@@ -45,8 +45,9 @@ module.exports = {
         // , [sequelize.fn('COUNT', sequelize.col(req.body.aggrigation)), 'no_apt']
         ] 
     }
+    query.order = [req.body.group];
     console.log(query)
-    console.log(req.body)
+    // console.log(req.body)
 
     return Apartment
     .findAll( query

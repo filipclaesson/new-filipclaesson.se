@@ -13046,15 +13046,17 @@ var MetricGraph = function (_React$Component) {
   }, {
     key: 'renderGraph',
     value: function renderGraph() {
-      console.log("current_metric_data");
-      console.log(this.props.current_metric_data);
+      var _this2 = this;
+
+      // console.log("current_metric_data")
+      // console.log(this.props.current_metric_data)
       var labels = this.props.current_metric_data.map(function (data_entry) {
-        return new Date(data_entry.sold_week).toISOString().slice(0, 10);
+        return new Date(data_entry[_this2.props.current_metric.group]).toISOString().slice(0, 10);
       });
       var data = this.props.current_metric_data.map(function (data_entry) {
         return Number(data_entry.aggrigation).toFixed(0);
       });
-      console.log(labels);
+      // console.log(labels)
 
       var chartData = {
 
