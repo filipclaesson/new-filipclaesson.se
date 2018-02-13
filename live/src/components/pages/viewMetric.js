@@ -20,9 +20,7 @@ class ViewMetric extends React.Component{
          <Col xs={12} md={4}>
           <MetricList />
          </Col>
-         </Row>
-         <Row>
-         <Col xs={12} md={12}>
+         <Col xs={12} md={8}>
           <MetricGraph />
          </Col>
          </Row>

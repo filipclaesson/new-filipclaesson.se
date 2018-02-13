@@ -64,3 +64,18 @@ values(
 , '2018-01-01 00:00:00'
 )
 
+values(
+'Innerstan Avg Pris'
+, 'pris i Innerstan 1 år' 
+, 1
+, 'Gärdet,Östermalm,Vasastan,Kungsholmen,Södermalm'
+, 'sold_week'
+, 'AVG'
+, 'sqm_sold_price'
+, 0
+, 100
+, '2017-01-01'
+, '2018-03-01'
+, '2018-01-01 00:00:00'
+, '2018-01-01 00:00:00'
+)
