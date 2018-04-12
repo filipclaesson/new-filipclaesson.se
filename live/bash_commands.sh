@@ -26,9 +26,11 @@ npm i nodemon -g
 npm i --save-dev nodemon
 nodemon
 
-
-# setup sequelize
+# ----------------------------
+# Setup sequelize
+# ----------------------------
 #https://scotch.io/tutorials/getting-started-with-node-express-and-postgres-using-sequelize
+npm install -g sequelize-cli
 npm install --save sequelize pg pg-hstore
 sequelize init
 # postgres
@@ -45,10 +47,28 @@ sequelize db:migrate
 
 
 ## alter existing model sequelize CLI:
-sequelize db:migrate:undo
+# https://gist.github.com/JoeKarlsson/ebb1c714466ae3de88ae565fa9ba4779
 sequelize db:migrate:undo:all # removes all tables
+ # remove all migration files
+ # re-run the generate model commands
+sequelize db:migrate
+
+
 #create new model from cli command
 sequelize db:migrate
 
 
 ## generate seeds (initial data setup)
+sequelize seed:generate --name settings-demo
+# update the file generated and fix the down function as well
+# insert the data in the table:
+sequelize db:seed:all
+# if undo: 
+sequelize db:seed:undo:all	
+
+
+
+
+## install charts
+install --save react-chartjs
+install --save chart.js@^1.1.1 react react-dom

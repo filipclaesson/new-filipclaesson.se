@@ -1,0 +1,8 @@
+[{
+	name: 'Innerstan Prices',
+	description: 'Metric which holds 3 months of innerstan apartment data',
+	item_type: 'graph',
+	dashboard: 1,
+	createdAt: new Date(),
+	updatedAt: new Date()
+}]

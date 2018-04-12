@@ -1,0 +1,49 @@
+[{
+          key:'locations',
+          value:'Gärdet,Östermalm,Vasastan,Kungsholmen,Södermalm',
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'group',
+          value: 'sold_week',
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'aggrigation_type',
+          value: 'AVG',
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'aggrigation',
+          value: 'sqm_sold_price',
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'sqm_low',
+          value: 0,
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'sqm_high',
+          value: 100,
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          },
+          {
+          key: 'range',
+          value: '3 months',
+          dashboard_item: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
+          }]

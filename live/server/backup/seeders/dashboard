@@ -1,0 +1,7 @@
+[{
+name: 'My Dashboard',
+description: 'All my graphs',
+user: 1,
+createdAt: new Date(),
+updatedAt: new Date()
+}]

@@ -1,17 +1,20 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('DashboardItems', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_name: {
+      name: {
         type: Sequelize.STRING
       },
-      email: {
+      description: {
+        type: Sequelize.STRING
+      },
+      item_type: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -21,10 +24,19 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      dashboard: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Dashboards',
+          key: 'id',
+          as: 'dashboard',
+        },
+      },
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('DashboardItems');
   }
 };

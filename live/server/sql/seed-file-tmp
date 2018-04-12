@@ -1,0 +1,31 @@
+
+insert into "Metrics"
+(name
+,description
+,"user"
+,locations
+,"group"
+,aggrigation_type
+,aggrigation
+,low_sqm
+,high_sqm
+,low_date
+,high_date
+,"createdAt"
+,"updatedAt")
+
+values(
+'Innerstan'
+, 'pris i södermalm veckovis' 
+, 1
+, 'Södermalm'
+, 'sold_week'
+, 'AVG'
+, 'sqm_sold_price'
+, 0
+, 100
+, '2017-09-01'
+, '2019-02-01'
+, '2018-01-01 00:00:00'
+, '2018-01-01 00:00:00'
+)

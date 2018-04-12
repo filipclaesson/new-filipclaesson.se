@@ -1,0 +1,7 @@
+[{
+        "user_name": "fille",
+        "name": "Filip Claesson",
+        "email": "filipclaesson@hotmail.com",
+        "createdAt": new Date(),
+        "updatedAt": new Date()
+      }]
