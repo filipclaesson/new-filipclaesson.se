@@ -4,9 +4,11 @@ const Setting = require('../models').Setting;
 
 module.exports = {
    list(req, res) {
+    console.log(req.params)
     return Dashboard
     .findAll(
     {
+      where: {user:req.params.user_id},
       include: [
         {
           model: DashboardItem,
@@ -25,10 +27,6 @@ module.exports = {
 };
 
 
-// Group.findAll({
-//   where: 'users.countryId = "DK"',
-//   include: [ { model: User, as: 'secondaryUsers' } ]
-// });
 
 // module.exports = {
 //    list(req, res) {

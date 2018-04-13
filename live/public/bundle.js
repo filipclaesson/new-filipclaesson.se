@@ -52516,7 +52516,7 @@ var Dashboard = function (_React$Component) {
   _createClass(Dashboard, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.props.getDashboardItems(1);
+      this.props.getDashboard(1);
     }
   }, {
     key: 'render',

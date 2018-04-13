@@ -8,7 +8,7 @@ import {getDashboard} from '../../actions/dashboardActions';
 
 class Dashboard extends React.Component{
   componentDidMount(){
-    this.props.getDashboardItems(1)
+    this.props.getDashboard(1)
   }
   render(){
 		return(
