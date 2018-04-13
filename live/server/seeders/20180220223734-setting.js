@@ -50,7 +50,29 @@ return queryInterface.bulkInsert('Settings', [{
           createdAt: new Date(),
           updatedAt: new Date(),
           dashboard_item: 1
-          }], {});
+          },
+          {
+          key:'locations',
+          value:'Gärdet,Östermalm,Vasastan,Kungsholmen,Södermalm',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key: 'group',
+          value: 'sold_month',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key: 'aggrigation_type',
+          value: 'SUM',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+     ], {});
   },
 
   down: function (queryInterface, Sequelize) {

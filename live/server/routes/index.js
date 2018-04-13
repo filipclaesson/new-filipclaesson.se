@@ -13,7 +13,7 @@ module.exports = (app) => {
   //   message: 'Welcome to the Todos API!',
   // }));
   app.get('/user', userController.list);
-  app.get('/dashboard_item/:dashboard_id', dashboardItemController.list);
+  app.get('/dashboard_item', dashboardItemController.list);
   app.get('/dashboard/:user_id', dashboardController.list);
   app.get('/dashboard', dashboardController.list);
   app.get('/setting', settingController.list);

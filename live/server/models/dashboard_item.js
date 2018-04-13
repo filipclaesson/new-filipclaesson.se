@@ -12,12 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  DashboardItem.associate = (models) => {
-     DashboardItem.hasMany(models.Setting, {
-      foreignKey: 'dashboard_item',
-      as: 'Settings'
-     });
-  }
+
 
   DashboardItem.associate = (models) => {
     DashboardItem.belongsTo(models.Dashboard, {
@@ -26,6 +21,13 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
+  DashboardItem.associate = (models) => {
+     DashboardItem.hasMany(models.Setting, {
+      foreignKey: 'dashboard_item',
+      as: 'Settings'
+     });
+  }
+  
   return DashboardItem;
 };
 

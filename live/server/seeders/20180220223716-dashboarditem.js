@@ -11,6 +11,15 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         dashboard: 1
+      },
+      {
+        id: 2,
+        name: 'Södermalm Prices',
+        description: 'Metric which holds data for södermalm',
+        item_type: 'graph',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        dashboard: 1
       }], {});
   },
 
