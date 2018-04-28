@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 module.exports = {
   list(req, res) {
     return Apartment
-    .findAll({where:{id:2557}})
+    .findAll({where:{id:9420}})
     .then(metric => res.status(200).send(metric))
     .catch(error => res.status(400).send(error));
   }
@@ -46,6 +46,7 @@ module.exports = {
         ] 
     }
     query.order = [req.body.group];
+    console.log("The query that will go out")
     console.log(query)
     // console.log(req.body)
 

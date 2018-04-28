@@ -48,7 +48,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
  return bindActionCreators({
- 	getMetrics:getMetrics
+ 	getMetrics:getMetrics,
+ 	getMetricData:getMetricData
  }, dispatch)
 }
 export default connect(mapStateToProps,mapDispatchToProps)(MetricsList);

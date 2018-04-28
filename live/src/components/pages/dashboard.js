@@ -2,8 +2,7 @@ import React from 'react'
 import {Col, Button, Grid, MenuItem,ButtonToolbar, DropdownButton, ButtonGroup, Row, Well} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-// import MetricList from './metricList'
-// import MetricGraph from './metricGraph'
+import DashboardItemsList from './dashboardItemsList'
 import {getDashboard} from '../../actions/dashboardActions';
 
 class Dashboard extends React.Component{
@@ -15,16 +14,17 @@ class Dashboard extends React.Component{
       <Grid>
        <Row>
          <Col xs={12} md={12} key='1'>
-         <h2>{this.props.dashboard[0].name}</h2>
+         <h2>{this.props.name}</h2>
          </Col>
          <Col xs={12} md={12} key='2'>
-         <h6>{this.props.dashboard[0].description}</h6>
+         <h6>{this.props.description}</h6>
          </Col>
        </Row>
        <Row>
          <Col xs={12} md={4}>
          </Col>
          <Col xs={12} md={8}>
+         <DashboardItemsList/>
          </Col>
          </Row>
       </Grid>
@@ -33,9 +33,10 @@ class Dashboard extends React.Component{
 }
 
 function mapStateToProps(state){
-  console.log(state)
   return {
-    dashboard: state.dashboard.dashboard
+    name: state.dashboard.dashboards[0].name,
+    dashboard_items: state.dashboard.dashboards[0].dashboard_items,
+    description: state.dashboard.dashboards[0].description
   }
 }
 

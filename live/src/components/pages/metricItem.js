@@ -3,21 +3,24 @@ import {Col, Row, Well, Button} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {metricClick} from '../../actions/metricsActions';
+import {getDashboardItemData} from '../../actions/dashboardActions';
+
+
 // import {addToCart, updateCart} from '../../actions/cartActions';
 
 class MetricItem extends React.Component{
-// constructor(){
- //         super();
+  componentDidMount(){
+  	let metaData = {
+  		locations:"Södermalm",
+  		group: "sold_week"
+  	}
+    this.props.getDashboardItemData(metaData)
+  }
 
- //         this.state = {
- //              color_black: true
- //         }
- //    }
 
 
   	handleSubmit(id){
   		/*this.setState({color_black: !this.state.color_black})*/
-
 		const currentMetrics = this.props.metrics;
 		let currentMetricIndex = currentMetrics.findIndex((metrics)=>{
 			console.log(metrics)
@@ -37,6 +40,8 @@ class MetricItem extends React.Component{
 	}
 	render(){
 		/*let bgColor = this.state.color_black ? "black" : "white"*/
+		console.log("METRIC PROPS")
+		console.log(this.props)
 		return(
 			<Well>
 				<Row>
@@ -51,14 +56,16 @@ class MetricItem extends React.Component{
 }
 
 function mapStateToProps(state){
+
 	return {
-		metrics: state.metrics.metrics,
-		user: state.user
+		user: state.user,
+		settings: []
 	}
 }
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		metricClick:metricClick
+		metricClick:metricClick,
+		getDashboardItemData:getDashboardItemData
 	}, dispatch)
 }
 // function mapDispatchToProps(dispatch){

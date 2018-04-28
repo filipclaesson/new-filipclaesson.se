@@ -8,6 +8,8 @@ const settingController = require('../controllers').settings;
 module.exports = (app) => {
   // app.get('/metric/:id', metricController.list);
   app.post('/get_metric_data', apartmentController.groupby);
+  app.get('/get_apt', apartmentController.list);
+
   // app.post('/create_metric', metricController.create);
   // app.get('/apartments', (req, res) => res.status(200).send({
   //   message: 'Welcome to the Todos API!',

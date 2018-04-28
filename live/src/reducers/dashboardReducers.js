@@ -4,11 +4,9 @@ import initialState from './initialState.js';
 export function dashboardReducers(state=initialState.dashboard, action){
 	switch (action.type) {
 		case "GET_DASHBOARD":
-		// console.log("detta läggs in i metrics: ")
-		console.log("inne i GET_DASHBOARD")
-		console.log({...state})
-		console.log(action.payload)
-		return {...state, dashboard:[...action.payload]}
+		// console.log({...state})
+		// console.log(action.payload)
+		return {...state, dashboards:action.payload}
 		break;
 		// case "GET_METRIC_DATA":
 		// console.log('Reducer: get metric data')
@@ -16,7 +14,7 @@ export function dashboardReducers(state=initialState.dashboard, action){
 		// return {...state, current_metric_data:[...action.payload]}
 		// break;
 		case "METRIC_CLICK":
-		// console.log("Reducer: metric clicked")
+		console.log("Reducer: metric clicked")
 		// console.log(action.payload)
 		return {...state, current_metric_data:action.payload.current_metric_data, current_metric:action.payload.current_metric}
 		break;
