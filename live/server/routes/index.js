@@ -16,6 +16,7 @@ module.exports = (app) => {
   // }));
   app.get('/user', userController.list);
   app.get('/dashboard_item', dashboardItemController.list);
+  app.post('/create_dashboard_item', dashboardItemController.create);
   app.get('/dashboard/:user_id', dashboardController.list);
   app.get('/dashboard', dashboardController.list);
   app.get('/setting', settingController.list);

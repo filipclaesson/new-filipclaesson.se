@@ -21,9 +21,9 @@ const middleware = applyMiddleware(thunk,logger);
 const store = createStore(reducers, middleware);
 
 
-import MetricList from './components/pages/metricList';
-import CreateMetric from './components/pages/createMetric';
-import ViewMetric from './components/pages/viewMetric';
+// import MetricList from './components/pages/metricList';
+import createGraphItem from './components/pages/createGraphItem';
+// import ViewMetric from './components/pages/viewMetric';
 import Dashboard from './components/pages/dashboard';
 import Main from './main'
 
@@ -33,7 +33,7 @@ const Routes = (
 			<Router history={browserHistory}>
 				<Route path="/" component={Main}>
 					<IndexRoute component={Dashboard}/>
-					<Route path="/create_metric" component={CreateMetric} />
+					<Route path="/create_metric" component={createGraphItem} />
 				</Route>
 			</Router>
 		</div>

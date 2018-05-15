@@ -11,7 +11,7 @@ var LineChart = require("react-chartjs").Line;
 class MetricGraph extends React.Component{
 
   render(){
-    console.log(this.props.current_metric.id)
+    console.log("börjar rendra grafen")
     if (this.props.current_metric.aggrigation){
       return(this.renderGraph());
     }else{

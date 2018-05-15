@@ -20,6 +20,15 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
         dashboard: 1
+      },
+      {
+        id: 3,
+        name: 'Hammarby Sjöstad Prices',
+        description: 'Metric which holds data for hammarby',
+        item_type: 'graph',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        dashboard: 1
       }], {});
   },
 

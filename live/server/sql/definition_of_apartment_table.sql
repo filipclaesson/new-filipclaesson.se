@@ -1,25 +1,3 @@
--- CREATE view "Apartments" 
--- (
---     id integer,
---     published timestamp with time zone,
---     published_week timestamp with time zone,
---     published_month timestamp with time zone,
---     sold_date timestamp with time zone,
---     sold_week timestamp with time zone,
---     sold_month timestamp with time zone,
---     object_type character varying(255) COLLATE pg_catalog."default",
---     living_area double precision,
---     list_price double precision,
---     sqm_list_price double precision,
---     sold_price double precision,
---     sqm_sold_price double precision,
---     location_from_geo character varying(255) COLLATE pg_catalog."default",
---     "createdAt" timestamp with time zone,
---     "updatedAt" timestamp with time zone
--- )
-
--- insert into "Apartments" (published, published_week, published_month, sold_date, sold_week, sold_month, object_type, living_area, list_price, sqm_list_price, sold_price, sqm_sold_price, location_from_geo, "createdAt", "updatedAt") (
-
 CREATE materialized view "Apartments" as (
 select
 row_number() over () as id
@@ -40,8 +18,48 @@ row_number() over () as id
 , now() as "createdAt"
 from sold
 where published > '2017-01-01'
- order by random() limit 300
 )
 
+-- UPDATE public.sold with db link
 
+-- CREATE EXTENSION dblink;
+truncate public.sold;
+
+insert into sold (
+SELECT * FROM dblink(
+    'dbname=postgres port=5432 host=192.168.0.5 user=filip password=imitthuvud'
+    , 'select * from booli.sold where sold_date > ''2017-01-01'''
+)
+as table_def(
+    booli_id bigint,
+    published timestamp without time zone,
+    sold_date timestamp without time zone,
+    object_type text COLLATE pg_catalog."default",
+    living_area numeric,
+    rooms numeric,
+    floor numeric,
+    rent numeric,
+    list_price numeric,
+    sold_price numeric,
+    sold_price_source text COLLATE pg_catalog."default",
+    construction_year bigint,
+    address_street_address text COLLATE pg_catalog."default",
+    region_municipality_name text COLLATE pg_catalog."default",
+    region_county_name text COLLATE pg_catalog."default",
+    url text COLLATE pg_catalog."default",
+    apartment_number text COLLATE pg_catalog."default",
+    distance_ocean numeric,
+    source_name text COLLATE pg_catalog."default",
+    source_url text COLLATE pg_catalog."default",
+    source_type text COLLATE pg_catalog."default",
+    source_id bigint,
+    position_longitude numeric,
+    position_latitude numeric,
+    additional_area numeric,
+    location_named_areas text COLLATE pg_catalog."default",
+    plot_area text COLLATE pg_catalog."default"
+)
+);
+
+refresh materialized view "Apartments";
 

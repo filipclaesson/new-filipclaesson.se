@@ -6,6 +6,13 @@ export function dashboardReducers(state=initialState.dashboard, action){
 		case "GET_DASHBOARD":
 		// console.log({...state})
 		// console.log(action.payload)
+
+		// let dashboard = action.payload[0]
+		// console.log(dashboard)
+		// dashboard.DashboardItems.map((item)=>{
+		// 	console.log(item)
+		// })
+		
 		return {...state, dashboards:action.payload}
 		break;
 		// case "GET_METRIC_DATA":
@@ -14,9 +21,11 @@ export function dashboardReducers(state=initialState.dashboard, action){
 		// return {...state, current_metric_data:[...action.payload]}
 		// break;
 		case "METRIC_CLICK":
-		console.log("Reducer: metric clicked")
-		// console.log(action.payload)
-		return {...state, current_metric_data:action.payload.current_metric_data, current_metric:action.payload.current_metric}
+		// console.log("Reducer: metric clicked")
+		//console.log(action.payload)
+		state.dashboards[0].DashboardItems[action.payload.item_id-1].current_metric_data = action.payload.current_metric_data
+		// dashboards[0].DashboardItems[action.payload.item_id].current_metric_data: action.payload.current_metric_data
+		return {...state}
 		break;
 		// case "POST_BOOK":
 		// let books = state.books.concat(action.payload);

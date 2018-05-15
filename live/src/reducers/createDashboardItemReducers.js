@@ -1,25 +1,22 @@
 'use strict'
 // Books Reducers
 import initialState from './initialState.js';
-export function metricsReducers(state=initialState.metrics, action){
+export function createDashboardItemReducers(state=initialState.createItemData, action){
 	switch (action.type) {
-		case "GET_METRICS":
-		// console.log("detta läggs in i metrics: ")
-		console.log("inne i GET_METRICS")
-		console.log({...state})
-		return {...state, metrics:[...action.payload]}
-		break;
-		// case "GET_METRIC_DATA":
-		// console.log('Reducer: get metric data')
+		
+
+
+		case "GET_DASHBOARD_ITEM_DATA_FOR_CREATE":
+		// console.log("FROM DASHBOARD REDUCER: ")
 		// console.log(action.payload)
-		// return {...state, current_metric_data:[...action.payload]}
-		// break;
-		case "METRIC_CLICK":
-		// console.log("Reducer: metric clicked")
-		// console.log(action.payload)
-		return {...state, current_metric_data:action.payload.current_metric_data, current_metric:action.payload.current_metric}
+		return {createItemData:[action.payload], graphSettings:action.payload.settings}
 		break;
-		// case "POST_BOOK":
+		case "CREATE_DASHBOARD_ITEM":
+		console.log("CREATE_DASHBOARD_ITEM")
+		console.log(action.payload)
+		return state
+		break;
+		// case "POST_DASHBOARD_ITEM":
 		// let books = state.books.concat(action.payload);
 		// return {books:[...state.books, action.payload]}
 		// break;

@@ -16,24 +16,24 @@ export function getDashboard(id){
 	}
 }
 
-export function getDashboardItemData(metaData){
-	// return {
-	// 	type:"GET_METRICS"
-	// }
-	console.log(metaData)
-	return function(dispatch){
-		axios.post("/get_metric_data", metaData)
-		.then(function(response){
-			dispatch(
-				{type:"METRIC_CLICK"
-				, payload:{current_metric_data:response.data,current_metric:metric}
-			})
-		})
-		.catch(function(err){
-			dispatch({type:"METRIC_CLICK_REJECTED", payload:err})
-		})
-	}
-}
+// export function getDashboardItemData(metaData){
+// 	// return {
+// 	// 	type:"GET_METRICS"
+// 	// }
+
+// 	return function(dispatch){
+// 		axios.post("/get_metric_data", metaData.metric)
+// 		.then(function(response){
+// 			dispatch(
+// 				{type:"METRIC_CLICK"
+// 				, payload:{current_metric_data:response.data, item_id: metaData.id}
+// 			})
+// 		})
+// 		.catch(function(err){
+// 			dispatch({type:"METRIC_CLICK_REJECTED", payload:err})
+// 		})
+// 	}
+// }
 
 // export function getDashboardItems(user_id){
 

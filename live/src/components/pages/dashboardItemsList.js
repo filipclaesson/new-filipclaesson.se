@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 
-import MetricsItem from './metricItem'
+import DashboardItem from './dashboardItem'
 // import {addToCart, updateCart} from '../../actions/cartActions';
 
 class DashboardItemsList extends React.Component{
@@ -17,11 +17,13 @@ class DashboardItemsList extends React.Component{
 
 		const DashboardItemsList = this.props.dashboard_items.map((Item)=>{
 				return(
-					<Col xs={12} md={12} key={Item.id}>
-						<MetricsItem 
+					<Col xs={12} md={12} xl={12 }key={Item.id}>
+						 {/*By setting is, name and description the DashboardItem-object will have these as own properties */}
+						<DashboardItem 
 						id ={Item.id}
 						name ={Item.name}
-						description ={Item.description}/>
+						description ={Item.description}
+						settings = {Item.Settings}/>
 					</Col>
 				)
 		  	}
@@ -30,7 +32,7 @@ class DashboardItemsList extends React.Component{
 		return(
 			<Grid>
 				<Row>
-					<Col xs={12} sm={6}>
+					<Col xs={12} md={12}>
 					{DashboardItemsList}
 					</Col>
 				</Row>
@@ -41,7 +43,7 @@ class DashboardItemsList extends React.Component{
 
 function mapStateToProps(state){
 	return {
-		user: state.user,
+		// user: state.user,
 		dashboard_items: state.dashboard.dashboards[0].DashboardItems
 	}
 }

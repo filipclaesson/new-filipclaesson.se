@@ -67,10 +67,85 @@ return queryInterface.bulkInsert('Settings', [{
           },
           {
           key: 'aggrigation_type',
-          value: 'SUM',
+          value: 'AVG',
           createdAt: new Date(),
           updatedAt: new Date(),
           dashboard_item: 2
+          },{
+          key: 'aggrigation',
+          value: 'sqm_sold_price',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key: 'sqm_low',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key: 'sqm_high',
+          value: 100,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key: 'range',
+          value: '3 months',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 2
+          },
+          {
+          key:'locations',
+          value:'Hammarbyhamnen',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },
+          {
+          key: 'group',
+          value: 'sold_month',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },
+          {
+          key: 'aggrigation_type',
+          value: 'AVG',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },{
+          key: 'aggrigation',
+          value: 'sqm_sold_price',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },
+          {
+          key: 'sqm_low',
+          value: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },
+          {
+          key: 'sqm_high',
+          value: 100,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
+          },
+          {
+          key: 'range',
+          value: '3 months',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          dashboard_item: 3
           },
      ], {});
   },

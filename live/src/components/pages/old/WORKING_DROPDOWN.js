@@ -11,15 +11,15 @@ import {bindActionCreators} from 'redux'
 
 
 
-class CreateItemFilter extends React.Component{
+class metricFilter extends React.Component{
 	constructor(props) {
         super(props);
 
         this.state = {
-        	cur_sel: 0
+        	val: ["Sold Price/sqm", "List Price/sqm", "Price increase %/sqm"]
+        	, cur_sel: 1
         }
-        console.log("this.props")
-        console.log(this.props)
+
         this.handleClick.bind(this);
     }
 
@@ -29,52 +29,40 @@ class CreateItemFilter extends React.Component{
 	dropdownChooseMetricType = 0;
 
 	handleClick = function(evt){
-    	// cur_sel is the index of the current selected dropdown item
+    	console.log("evt")
+    	console.log(evt)
+    	console.log(this.state)
     	this.setState({ cur_sel: evt})
-
-    	//  this.props.graphSettings:  is mapped from state, it is the settings that is currently shown on the graph
-    	//  this.props.type: aggregation, location etc.
-      	var metaData = {
-        metric: this.props.graphSettings
-        ,id: "-90"
-      	}
-      	metaData.metric[this.props.type] = this.props.dropdownListValues.keys[evt]
-
-    	this.props.getCreateItemsData(metaData)
-
   	}
 
-
-
 	render(){
-		const dropdowns = this.props.dropdownListValues.values.map((Item,i )=>{
-				return(
-					<MenuItem key={i} eventKey={i}>{Item}</MenuItem>
-				)
-		  	}
-		)
-
 		return(
 
 			<ButtonToolbar>
 			<DropdownButton
 				bsStyle="default"
-				title={this.props.dropdownListValues.values[this.state.cur_sel]}
+				title={this.state.val[this.state.cur_sel]}
 				key={1}
 				onSelect={
 					this.handleClick.bind(this)
 				}
 				id={`dropdown-basic-${1}`}>
-				{dropdowns}
-
+				<MenuItem eventKey="0">{this.state.val[0]}</MenuItem>
+				<MenuItem eventKey="1">{this.state.val[1]}</MenuItem>
+				<MenuItem eventKey="2">{this.state.val[2]}>
+				Active Item
+				</MenuItem>
+				<MenuItem divider />
+				<MenuItem eventKey="4">Separated link</MenuItem>
 			</DropdownButton>
 			</ButtonToolbar>
 		)
 	}
 }
 function mapStateToProps(state){
+	console.log("HEJ")
 	return{
-		graphSettings: state.createDashboardItem.graphSettings
+		
 	}
 }
 // function mapDispatchToProps(dispatch){
@@ -83,5 +71,5 @@ function mapStateToProps(state){
 // 		updateCart:updateCart
 // 	}, dispatch)
 // }
-export default connect(mapStateToProps)(CreateItemFilter);
+export default connect(mapStateToProps)(metricFilter);
 

@@ -13,7 +13,7 @@ module.exports = {
     if(req.body.locations){
         location_array = req.body.locations.split(",")
         console.log(req.body.locations)
-        query.where = {location_from_geo: {
+        query.where = {area_from_geo: {
             [Sequelize.Op.in]: location_array}
         };
     }
