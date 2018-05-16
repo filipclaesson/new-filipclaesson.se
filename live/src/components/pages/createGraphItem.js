@@ -64,10 +64,15 @@ class createMetric extends React.Component{
   
   
   handleSubmit(){
+    this.props.graphSettings["aggrigation_type"]
+    let aggrigation_type = this.props.graphSettings["aggrigation_type"].toLowerCase()
+    aggrigation_type = aggrigation_type.charAt(0).toUpperCase() + aggrigation_type.slice(1)
     
+    let aggrigation = this.props.graphSettings["aggrigation"]
+    aggrigation = aggrigation.split("_").join(" ");
 
-    let name = this.props.graphSettings["aggrigation"] + " in area(s): " + this.props.graphSettings["locations"]
-    let description = "group: " + this.props.graphSettings["group"]+  ", aggrigation_type: " + this.props.graphSettings["aggrigation_type"]
+    let name = aggrigation_type + " " + aggrigation
+    let description = "locations: " + this.props.graphSettings["locations"]
     let create_item_data = this.props.graphSettings
     create_item_data["name"] = name
     create_item_data["description"] = description
