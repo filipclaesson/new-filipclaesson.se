@@ -24,8 +24,8 @@ module.exports = {
     // Creating with associations
     // http://docs.sequelizejs.com/manual/tutorial/associations.html
     return DashboardItem.create({
-      name: 'test',
-      description: 'test beskrivning',
+      name: graphSettings.name,
+      description: graphSettings.description,
       item_type: 'graph',
       Settings: [
           {key:'locations',value: graphSettings['locations']},

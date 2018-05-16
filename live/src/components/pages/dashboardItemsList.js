@@ -17,7 +17,7 @@ class DashboardItemsList extends React.Component{
 
 		const DashboardItemsList = this.props.dashboard_items.map((Item)=>{
 				return(
-					<Col xs={12} md={12} xl={12 }key={Item.id}>
+					<Col xs={12} md={6} xl={6}key={Item.id}>
 						 {/*By setting is, name and description the DashboardItem-object will have these as own properties */}
 						<DashboardItem 
 						id ={Item.id}

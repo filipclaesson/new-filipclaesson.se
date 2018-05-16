@@ -12,9 +12,14 @@ module.exports = {
     location_array = [] 
     if(req.body.locations){
         location_array = req.body.locations.split(",")
+        console.log("req.body.locations")
         console.log(req.body.locations)
         query.where = {area_from_geo: {
             [Sequelize.Op.in]: location_array}
+        };
+    }else{
+        query.where = {area_from_geo: {
+            [Sequelize.Op.in]: [""]}
         };
     }
     sqm_array = [0,10000]

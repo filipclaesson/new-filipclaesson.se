@@ -2,7 +2,8 @@ import React from 'react'
 import {Col, Button, Grid, MenuItem,ButtonToolbar, DropdownButton, ButtonGroup, Row, Well} from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import CreateItemFilter from './metricFilter'
+import Dropdown from './dropdown'
+import DropdownMultiSelect from './dropdownMultiSelect'
 // import MetricList from './metricList'
 import GraphItem from './graphItem'
 import {getCreateItemsData,createItem} from '../../actions/createDashboardItemActions';
@@ -21,10 +22,38 @@ class createMetric extends React.Component{
         keys:["sqm_sold_price","sqm_list_price"],
         values:["Sold Price/sqm", "List Price/sqm"]
       },
-      filterSettingsLocation: {
-        keys:["Gärdet","Östermalm","Vasastan","Kungsholmen","Södermalm"],
-        values:["Gärdet","Östermalm","Vasastan","Kungsholmen","Södermalm"]
-      }
+      filterSettingsLocation:[
+        {value:"Södermalm", label:"Södermalm"},
+        {value:"Kungsholmen", label:"Kungsholmen"},
+        {value:"Vasastan", label:"Vasastan"},
+        {value:"Östermalm", label:"Östermalm"},
+        {value:"Sundbyberg", label:"Sundbyberg"},
+        {value:"Råsunda", label:"Råsunda"},
+        {value:"Gärdet", label:"Gärdet"},
+        {value:"Årsta", label:"Årsta"},
+        {value:"Huvudsta", label:"Huvudsta"},
+        {value:"Midsommarkransen", label:"Midsommarkransen"},
+        {value:"Hammarbyhamnen", label:"Hammarbyhamnen"},
+        {value:"Hammarbyhöjden", label:"Hammarbyhöjden"},
+        {value:"Mariehäll", label:"Mariehäll"},
+        {value:"Hagalund", label:"Hagalund"},
+        {value:"Liljeholmen", label:"Liljeholmen"},
+        {value:"Järva", label:"Järva"},
+        {value:"Aspudden", label:"Aspudden"},
+        {value:"Ursta", label:"Ursta"},
+        {value:"Fruängen", label:"Fruängen"},
+        {value:"Traneberg", label:"Traneberg"},
+        {value:"Globen", label:"Globen"},
+        {value:"Gamla Enskede", label:"Gamla Enskede"},
+        {value:"Lilla Essingen", label:"Lilla Essingen"},
+        {value:"Skytteholm", label:"Skytteholm"},
+        {value:"Hjorthagen", label:"Hjorthagen"},
+        {value:"Norrmalm", label:"Norrmalm"},
+        {value:"Gröndal", label:"Gröndal"},
+        {value:"Hägerstensåsen", label:"Hägerstensåsen"},
+        {value:"Västberga", label:"Västberga"},
+        {value:"Riksby", label:"Riksby"}
+        ]
     }
     
   }
@@ -35,6 +64,22 @@ class createMetric extends React.Component{
   
   
   handleSubmit(){
+    this.props.graphSettings["aggrigation_type"]
+    let aggrigation_type = this.props.graphSettings["aggrigation_type"].toLowerCase()
+    aggrigation_type = aggrigation_type.charAt(0).toUpperCase() + aggrigation_type.slice(1)
+    
+    let aggrigation = this.props.graphSettings["aggrigation"]
+    aggrigation = aggrigation.split("_").join(" ");
+
+    let name = aggrigation_type + " " + aggrigation
+    let description = "locations: " + this.props.graphSettings["locations"]
+    let create_item_data = this.props.graphSettings
+    create_item_data["name"] = name
+    create_item_data["description"] = description
+    console.log(name)
+    console.log(description)
+
+     // + this.props.graphSettings["locations"]
 
     this.props.createItem(this.props.graphSettings)
   }
@@ -73,18 +118,11 @@ class createMetric extends React.Component{
           </Col>
         </Row>
         <Row>
-          <Col xs={3} md={3}>
-            <CreateItemFilter 
+          <Col xs={6} md={6}>
+            <Dropdown
             dropdownListValues={this.state.filterSettingsAggregation}
             getCreateItemsData={this.props.getCreateItemsData}
             type={"aggrigation"}
-            />
-          </Col>
-          <Col xs={3} md={3}> 
-            <CreateItemFilter 
-            dropdownListValues={this.state.filterSettingsLocation}
-            getCreateItemsData={this.props.getCreateItemsData}
-            type={"locations"}
             />
           </Col>
           <Col xs={6} md={6}> 
@@ -93,7 +131,15 @@ class createMetric extends React.Component{
           > Create Graph </Button>
           </Col>
         </Row>
-        
+        <Row>
+        <Col xs={6} md={6}> 
+        <DropdownMultiSelect
+          dropdownListValues={this.state.filterSettingsLocation}
+          getCreateItemsData={this.props.getCreateItemsData}
+          type={"locations"}
+        ></DropdownMultiSelect>
+        </Col>
+        </Row>
         
       </Grid>
     )

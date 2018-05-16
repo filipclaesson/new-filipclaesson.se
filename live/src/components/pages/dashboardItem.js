@@ -43,7 +43,7 @@ class DashboardItem extends React.Component{
 			<Well>
 				<Row>
 					<Col onClick={this.handleSubmit.bind(this, this.props.id)}  xs={12} md={12}>
-						<h6>{this.props.id}. {this.props.name}</h6>
+						<h4>{this.props.id}. {this.props.name}</h4>
 						<p>{this.props.description}</p>
 					</Col>
 				</Row>
