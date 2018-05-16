@@ -4,12 +4,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 
-// const metric_type = ["Sold Price/sqm", "List Price/sqm", "Price increase %/sqm"]
-// const period_time = ["1 Week", "1 Month", "3 Month", "6 Month", "1 Year"]
-// const area = ["City", "Stockholm Komun"]
-
-
-
 
 class CreateItemFilter extends React.Component{
 	constructor(props) {
@@ -18,12 +12,9 @@ class CreateItemFilter extends React.Component{
         this.state = {
         	cur_sel: 0
         }
-        console.log("this.props")
-        console.log(this.props)
+
         this.handleClick.bind(this);
     }
-
-
 	
 	
 	dropdownChooseMetricType = 0;
@@ -43,8 +34,6 @@ class CreateItemFilter extends React.Component{
     	this.props.getCreateItemsData(metaData)
 
   	}
-
-
 
 	render(){
 		const dropdowns = this.props.dropdownListValues.values.map((Item,i )=>{
@@ -77,11 +66,6 @@ function mapStateToProps(state){
 		graphSettings: state.createDashboardItem.graphSettings
 	}
 }
-// function mapDispatchToProps(dispatch){
-// 	return bindActionCreators({
-// 		addToCart:addToCart,
-// 		updateCart:updateCart
-// 	}, dispatch)
-// }
+
 export default connect(mapStateToProps)(CreateItemFilter);
 
