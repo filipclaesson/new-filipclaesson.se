@@ -61,6 +61,8 @@ class createMetric extends React.Component{
   }
 
   componentDidMount(){
+    console.log(window.innerWidth)
+
     this.props.getCreateItemsData(this.state.metaData);
   }
   
@@ -108,42 +110,46 @@ class createMetric extends React.Component{
       ,{id: 14, key: "range", value: "3 months", createdAt: "2018-05-06T09:27:29.125Z", updatedAt: "2018-05-06T09:27:29.125Z"}
     ]
     return(
-      <Grid>
+      <Grid fluid>
         <Row>
-         <Col xs={12} md={12} key='1'>
-         <h2>Create new graph</h2>
-         </Col>
-       </Row>
-       <Row>
-          <Col>
-            <GraphItem settings={settings} itemData= {this.props.itemData[0].data} id = {this.props.id}/>
-          </Col>
+             <h2 className="col-md-6 col-md-offset-2" >Create new graph</h2>
         </Row>
+        
         <Row>
-          <Col xs={6} md={6}>
-            <Dropdown
-            dropdownListValues={this.state.filterSettingsAggregation}
-            getCreateItemsData={this.props.getCreateItemsData}
-            type={"aggrigation"}
+          <Col xs={12} md={6} key='1'>
+            <Row>
+              <GraphItem settings={settings} itemData= {this.props.itemData[0].data} id = {this.props.id}/>
+            </Row>
+
+            <Row>
+              <DropdownMultiSelect
+                dropdownListValues={this.state.filterSettingsLocation}
+                getCreateItemsData={this.props.getCreateItemsData}
+                type={"locations"}>
+              </DropdownMultiSelect>
+            </Row>
+            
+            <Row>
+              <Col xs={6} md={6}>
+                <Dropdown
+                dropdownListValues={this.state.filterSettingsAggregation}
+                getCreateItemsData={this.props.getCreateItemsData}
+                type={"aggrigation"}
+                />
+              </Col>
+              <Col  xs={6} md={6}> 
+                <Button
+                  className="pull-right"
+                  onClick={this.handleSubmit.bind(this, this.props.id)}
+                > Create Graph </Button>
+              </Col>
+            </Row>
+          </Col>
+          <Col xs={12} md={6} key='2' >
+            <MapView 
+              containerHeight="10%"
             />
           </Col>
-          <Col xs={6} md={6}> 
-          <Button
-          onClick={this.handleSubmit.bind(this, this.props.id)}
-          > Create Graph </Button>
-          </Col>
-        </Row>
-        <Row>
-        <Col xs={6} md={6}> 
-        <DropdownMultiSelect
-          dropdownListValues={this.state.filterSettingsLocation}
-          getCreateItemsData={this.props.getCreateItemsData}
-          type={"locations"}
-        ></DropdownMultiSelect>
-        </Col>
-        </Row>
-        <Row>
-        <MapView />
 
         </Row>
       </Grid>

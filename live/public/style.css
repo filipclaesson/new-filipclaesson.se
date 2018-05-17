@@ -16,3 +16,7 @@ body {
 .badge{
 	background-color: orange;
 }
+
+.row-bottom-margin{ 
+	margin-bottom:20px; 
+}
