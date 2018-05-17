@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import Dropdown from './dropdown'
 import DropdownMultiSelect from './dropdownMultiSelect'
+import MapView from './leafletMap'
+
 // import MetricList from './metricList'
 import GraphItem from './graphItem'
 import {getCreateItemsData,createItem} from '../../actions/createDashboardItemActions';
@@ -140,7 +142,10 @@ class createMetric extends React.Component{
         ></DropdownMultiSelect>
         </Col>
         </Row>
-        
+        <Row>
+        <MapView />
+
+        </Row>
       </Grid>
     )
   }
