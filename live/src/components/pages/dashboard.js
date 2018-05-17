@@ -12,7 +12,7 @@ class Dashboard extends React.Component{
   render(){
 		return(
       
-      <Grid>
+      <Grid fluid>
        <Row>
          <Col xs={12} md={12} key='1'>
          <h2>{this.props.name}</h2>

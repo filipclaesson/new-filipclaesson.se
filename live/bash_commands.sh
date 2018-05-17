@@ -72,3 +72,11 @@ sequelize db:seed:undo:all
 ## install charts
 install --save react-chartjs
 install --save chart.js@^1.1.1 react react-dom
+
+
+
+# ------------- INSTALL LEAFLET MAP ------------- #
+# https://blog.sightlinemaps.com/setting-up-mapbox-and-leaflet-with-react-and-webpack-f4253cc696c8
+npm install --save react-leaflet leaflet
+# added link in index - <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
