@@ -67450,6 +67450,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // have added link in index...
 
 var position = [59.33057783, 18.0894317];
+var polyline = [[59.31918, 18.02659], [59.3215, 18.05145], [59.32163, 18.06976], [59.31624, 18.09989], [59.31607, 18.10873], [59.31187, 18.10177], [59.30753, 18.0986], [59.30265, 18.07551], [59.30499, 18.06036], [59.30862, 18.04746], [59.31643, 18.02505], [59.31918, 18.02659]];
+// const polygon = [[59.31918,18.02659],[59.3215,18.05145],[59.32163,18.06976],[59.31624,18.09989],[59.31607,18.10873],[59.31187,18.10177],[59.30753,18.0986],[59.30265,18.07551],[59.30499,18.06036],[59.30862,18.04746],[59.31643,18.02505],[59.31918,18.02659]]
+
+// [[59.31918,18.02659],[59.3215,18.05145],[59.32163,18.06976],[59.31624,18.09989],[59.31607,18.10873],[59.31187,18.10177],[59.30753,18.0986],[59.30265,18.07551],[59.30499,18.06036],[59.30862,18.04746],[59.31643,18.02505],[59.31918,18.02659]]
+var polygon = [[59.34095, 18.0652], [59.34371, 18.06267], [59.3451, 18.06305], [59.34579, 18.06244], [59.34685, 18.06649], [59.3514, 18.05618], [59.35034, 18.05043], [59.35003, 18.04442], [59.35068, 18.04146], [59.34701, 18.03101], [59.34377, 18.02587], [59.33983, 18.02524], [59.33888, 18.02782], [59.33736, 18.03461], [59.33553, 18.0469], [59.33621, 18.04765], [59.33654, 18.04842], [59.33783, 18.05332], [59.33825, 18.05292], [59.33884, 18.05519], [59.33845, 18.05561], [59.34095, 18.0652]];
 
 var MapView = function (_React$Component) {
   _inherits(MapView, _React$Component);
@@ -67457,7 +67462,28 @@ var MapView = function (_React$Component) {
   function MapView(props) {
     _classCallCheck(this, MapView);
 
-    return _possibleConstructorReturn(this, (MapView.__proto__ || Object.getPrototypeOf(MapView)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (MapView.__proto__ || Object.getPrototypeOf(MapView)).call(this, props));
+
+    _this.state = {
+      hasLocation: false,
+      latlng: {
+        lat: 51.505,
+        lng: -0.09
+      }
+    };
+
+    _this.handleClick = function () {
+      console.log(_this.refs.map.leafletElement.locate());
+    };
+
+    _this.handleLocationFound = function (e) {
+      _this.setState({
+        hasLocation: true,
+        latlng: e.latlng
+      });
+    };
+
+    return _this;
   }
 
   _createClass(MapView, [{
@@ -67471,10 +67497,14 @@ var MapView = function (_React$Component) {
           {
             style: { height: "70vh" },
             center: position,
-            zoom: 10 },
+            onClick: this.handleClick,
+            zoom: 12,
+            ref: 'map'
+          },
           _react2.default.createElement(_reactLeaflet.TileLayer, {
             url: 'https://api.mapbox.com/styles/v1/mrliffa/citses8bt00062ipelfijao0j/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibXJsaWZmYSIsImEiOiJjaXRzZWk2NDYwMDFoMm5tcmdobXVwMmgzIn0.I-e4EO_ZN-gC27258NMZNQ',
-            attribution: '<attribution>' })
+            attribution: '<attribution>' }),
+          _react2.default.createElement(_reactLeaflet.Polygon, { color: 'black', positions: polygon })
         )
       );
     }
@@ -67482,6 +67512,9 @@ var MapView = function (_React$Component) {
 
   return MapView;
 }(_react2.default.Component);
+
+// export default (MapView);
+
 
 exports.default = MapView;
 
